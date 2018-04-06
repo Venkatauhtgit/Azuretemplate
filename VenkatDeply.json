@@ -49,7 +49,7 @@
 
 		},
 		"variables": {
-			"apiManagementServiceName": "[concat('apiservice', parameters('mgtservice'))]"
+			"apiManagementServiceName": "[concat('apiservice', 'venkat')]"
 		},
 
 		"resources": [{
