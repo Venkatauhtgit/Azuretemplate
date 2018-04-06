@@ -3,14 +3,37 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "publisherEmail": {
-            "value": "venkatauht@gmail.com"
+            "value": "email@example.com"
         },
         "publisherName": {
-            "value": "Venkat"
+            "value": "templateTest"
         },
-        
+        "mutualAuthenticationCertificate": {
+            "value": ""
+        },
+        "certificatePassword": {
+            "value": ""
+        },
+        "eventHubNamespaceConnectionString": {
+            "value": ""
+        },
+        "googleClientSecret": {
+            "value": ""
+        },
+        "openIdConnectClientSecret": {
+            "value": ""
+        },
+        "tenantPolicy": {
+            "value": ""
+        },
         "apiPolicy": {
             "value": ""
         },
+        "operationPolicy": {
+            "value": ""
+        },
+        "productPolicy": {
+            "value": ""
+        }
     }
 }
