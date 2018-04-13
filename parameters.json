@@ -1,0 +1,195 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "service_TestApiMgt1_name": {
+            "value": null
+        },
+        "users_1_name": {
+            "value": null
+        },
+        "apis_echo_api_name": {
+            "value": null
+        },
+        "groups_guests_name": {
+            "value": null
+        },
+        "apis_calculator_name": {
+            "value": null
+        },
+        "policies_policy_name": {
+            "value": null
+        },
+        "products_starter_name": {
+            "value": null
+        },
+        "groups_developers_name": {
+            "value": null
+        },
+        "notifications_BCC_name": {
+            "value": null
+        },
+        "products_unlimited_name": {
+            "value": null
+        },
+        "products_calcproduct_name": {
+            "value": null
+        },
+        "groups_administrators_name": {
+            "value": null
+        },
+        "users_1_name_1": {
+            "value": null
+        },
+        "users_1_name_2": {
+            "value": null
+        },
+        "apis_echo_api_name_1": {
+            "value": null
+        },
+        "groups_guests_name_1": {
+            "value": null
+        },
+        "templates_AccountClosedDeveloper_name": {
+            "value": null
+        },
+        "policies_policy_name_1": {
+            "value": null
+        },
+        "apis_echo_api_name_2": {
+            "value": null
+        },
+        "groups_guests_name_2": {
+            "value": null
+        },
+        "groups_developers_name_1": {
+            "value": null
+        },
+        "notifications_AccountClosedPublisher_name": {
+            "value": null
+        },
+        "templates_EmailChangeIdentityDefault_name": {
+            "value": null
+        },
+        "apis_calculator_name_1": {
+            "value": null
+        },
+        "groups_developers_name_2": {
+            "value": null
+        },
+        "templates_NewIssueNotificationMessage_name": {
+            "value": null
+        },
+        "subscriptions_5acf3eee7e80bd008a070001_name": {
+            "value": null
+        },
+        "subscriptions_5acf3eee7e80bd008a070002_name": {
+            "value": null
+        },
+        "subscriptions_5acf5350d862c80ef4676eda_name": {
+            "value": null
+        },
+        "templates_ConfirmSignUpIdentityDefault_name": {
+            "value": null
+        },
+        "templates_PasswordResetIdentityDefault_name": {
+            "value": null
+        },
+        "groups_administrators_name_1": {
+            "value": null
+        },
+        "templates_InviteUserNotificationMessage_name": {
+            "value": null
+        },
+        "templates_NewCommentNotificationMessage_name": {
+            "value": null
+        },
+        "operations_create_resource_name": {
+            "value": null
+        },
+        "operations_modify_resource_name": {
+            "value": null
+        },
+        "operations_remove_resource_name": {
+            "value": null
+        },
+        "groups_administrators_name_2": {
+            "value": null
+        },
+        "templates_NewDeveloperNotificationMessage_name": {
+            "value": null
+        },
+        "operations_retrieve_resource_name": {
+            "value": null
+        },
+        "groups_administrators_name_3": {
+            "value": null
+        },
+        "templates_RejectDeveloperNotificationMessage_name": {
+            "value": null
+        },
+        "templates_RequestDeveloperNotificationMessage_name": {
+            "value": null
+        },
+        "operations_retrieve_header_only_name": {
+            "value": null
+        },
+        "templates_PurchaseDeveloperNotificationMessage_name": {
+            "value": null
+        },
+        "notifications_NewApplicationNotificationMessage_name": {
+            "value": null
+        },
+        "templates_ApplicationApprovedNotificationMessage_name": {
+            "value": null
+        },
+        "notifications_RequestPublisherNotificationMessage_name": {
+            "value": null
+        },
+        "templates_PasswordResetByAdminNotificationMessage_name": {
+            "value": null
+        },
+        "operations_retrieve_resource_cached_name": {
+            "value": null
+        },
+        "notifications_PurchasePublisherNotificationMessage_name": {
+            "value": null
+        },
+        "notifications_NewIssuePublisherNotificationMessage_name": {
+            "value": null
+        },
+        "operations_5acf5311d862c80ef4676ed5_name": {
+            "value": null
+        },
+        "operations_5acf5312d862c80ef4676ed8_name": {
+            "value": null
+        },
+        "operations_5acf5312d862c80ef4676ed7_name": {
+            "value": null
+        },
+        "operations_5acf5312d862c80ef4676ed6_name": {
+            "value": null
+        },
+        "policies_policy_name_2": {
+            "value": null
+        },
+        "templates_QuotaLimitApproachingDeveloperNotificationMessage_name": {
+            "value": null
+        },
+        "schemas_c91970bd_8835_440b_b747_cfb8ad3ce81f_name": {
+            "value": null
+        },
+        "policies_policy_name_3": {
+            "value": null
+        },
+        "notifications_QuotaLimitApproachingPublisherNotificationMessage_name": {
+            "value": null
+        },
+        "policies_policy_name_4": {
+            "value": null
+        },
+        "policies_policy_name_5": {
+            "value": null
+        }
+    }
+}
