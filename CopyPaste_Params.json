@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "service_TestApiMgt1_name": {
-            "value": null
+            "value": "TestCalculator"
         },
         "users_1_name": {
             "value": null
