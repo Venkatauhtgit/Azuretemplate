@@ -86,16 +86,16 @@
             "defaultValue": "developers",
             "type": "String"
         },
+        "apis_calculator_name_1": {
+            "defaultValue": "calculator",
+            "type": "String"
+        },
         "notifications_AccountClosedPublisher_name": {
             "defaultValue": "AccountClosedPublisher",
             "type": "String"
         },
         "templates_EmailChangeIdentityDefault_name": {
             "defaultValue": "EmailChangeIdentityDefault",
-            "type": "String"
-        },
-        "apis_calculator_name_1": {
-            "defaultValue": "calculator",
             "type": "String"
         },
         "groups_developers_name_2": {
@@ -780,7 +780,7 @@
                 "subject": "Welcome to the $OrganizationName API!",
                 "body": "<!DOCTYPE html >\r\n<html>\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <title>Letter</title>\r\n  </head>\r\n  <body>\r\n    <h1 style=\"color:#000505;font-size:18pt;font-family:'Segoe UI'\">\r\n          Welcome to <span style=\"color:#003363\">$OrganizationName API!</span></h1>\r\n    <p style=\"font-size:12pt;font-family:'Segoe UI'\">Dear $DevFirstName $DevLastName,</p>\r\n    <p style=\"font-size:12pt;font-family:'Segoe UI'\">Your $OrganizationName API program registration is completed and we are thrilled to have you as a customer. Here are a few important bits of information for your reference:</p>\r\n    <table width=\"100%\" style=\"margin:20px 0\">\r\n      <tr>\r\n            #if ($IdentityProvider == \"Basic\")\r\n            <td width=\"50%\" style=\"height:40px;vertical-align:top;font-family:'Segoe UI';font-size:12pt\">\r\n              Please use the following <strong>username</strong> when signing into any of the ${OrganizationName}-hosted developer portals:\r\n            </td><td style=\"vertical-align:top;font-family:'Segoe UI';font-size:12pt\"><strong>$DevUsername</strong></td>\r\n            #else\r\n            <td width=\"50%\" style=\"height:40px;vertical-align:top;font-family:'Segoe UI';font-size:12pt\">\r\n              Please use the following <strong>$IdentityProvider account</strong> when signing into any of the ${OrganizationName}-hosted developer portals:\r\n            </td><td style=\"vertical-align:top;font-family:'Segoe UI';font-size:12pt\"><strong>$DevUsername</strong></td>            \r\n            #end\r\n          </tr>\r\n      <tr>\r\n        <td style=\"height:40px;vertical-align:top;font-family:'Segoe UI';font-size:12pt\">\r\n              We will direct all communications to the following <strong>email address</strong>:\r\n            </td>\r\n        <td style=\"vertical-align:top;font-family:'Segoe UI';font-size:12pt\">\r\n          <a href=\"mailto:$DevEmail\" style=\"text-decoration:none\">\r\n            <strong>$DevEmail</strong>\r\n          </a>\r\n        </td>\r\n      </tr>\r\n    </table>\r\n    <p style=\"font-size:12pt;font-family:'Segoe UI'\">Best of luck in your API pursuits!</p>\r\n    <p style=\"font-size:12pt;font-family:'Segoe UI'\">$OrganizationName API Team</p>\r\n    <p style=\"font-size:12pt;font-family:'Segoe UI'\">\r\n      <a href=\"http://$DevPortalUrl\">$DevPortalUrl</a>\r\n    </p>\r\n  </body>\r\n</html>",
                 "title": "Developer welcome letter",
-                "description": "Developers receive this ìwelcomeî email after they confirm their new account.",
+                "description": "Developers receive this ‚Äúwelcome‚Äù email after they confirm their new account.",
                 "parameters": [
                     {
                         "name": "DevFirstName",
@@ -1321,7 +1321,7 @@
                 "method": "POST",
                 "urlTemplate": "/?soapAction=http://tempuri.org/Add",
                 "templateParameters": [],
-                "description": "Adds two integers. This is a test WebService. ©DNE Online",
+                "description": "Adds two integers. This is a test WebService. ¬©DNE Online",
                 "request": {
                     "description": "AddSoapIn",
                     "queryParameters": [],
@@ -1849,31 +1849,6 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/1a174873-108d-4073-b37d-9ccb9bbbb272/resourcegroups/TestAPI/providers/Microsoft.ApiManagement/service/TestApiMgt1/products/calcproduct/apis/calculator'.",
-            "type": "Microsoft.ApiManagement/service/products/apis",
-            "name": "[concat(parameters('service_TestApiMgt1_name'), '/', parameters('products_calcproduct_name'), '/', parameters('apis_calculator_name_1'))]",
-            "apiVersion": "2017-03-01",
-            "scale": null,
-            "properties": {
-                "displayName": "[parameters('apis_calculator_name_1')]",
-                "apiRevision": "1",
-                "description": "Gives  mathematical values based on operation.",
-                "serviceUrl": "[concat('http://www.dneonline.com/', parameters('apis_calculator_name_1'),'.asmx')]",
-                "path": "[parameters('apis_calculator_name_1')]",
-                "protocols": [
-                    "https"
-                ],
-                "authenticationSettings": null,
-                "subscriptionKeyParameterNames": null,
-                "type": "soap",
-                "isCurrent": true
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_TestApiMgt1_name'))]",
-                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_TestApiMgt1_name'), parameters('products_calcproduct_name'))]"
-            ]
-        },
-        {
             "comments": "Generalized from resource: '/subscriptions/1a174873-108d-4073-b37d-9ccb9bbbb272/resourcegroups/TestAPI/providers/Microsoft.ApiManagement/service/TestApiMgt1/products/calcproduct/groups/administrators'.",
             "type": "Microsoft.ApiManagement/service/products/groups",
             "name": "[concat(parameters('service_TestApiMgt1_name'), '/', parameters('products_calcproduct_name'), '/', parameters('groups_administrators_name_3'))]",
@@ -1981,6 +1956,31 @@
             "dependsOn": [
                 "[resourceId('Microsoft.ApiManagement/service', parameters('service_TestApiMgt1_name'))]",
                 "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_TestApiMgt1_name'), parameters('products_starter_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1a174873-108d-4073-b37d-9ccb9bbbb272/resourcegroups/TestAPI/providers/Microsoft.ApiManagement/service/TestApiMgt1/products/unlimited/apis/calculator'.",
+            "type": "Microsoft.ApiManagement/service/products/apis",
+            "name": "[concat(parameters('service_TestApiMgt1_name'), '/', parameters('products_unlimited_name'), '/', parameters('apis_calculator_name_1'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "displayName": "[parameters('apis_calculator_name_1')]",
+                "apiRevision": "1",
+                "description": "Gives  mathematical values based on operation.",
+                "serviceUrl": "[concat('http://www.dneonline.com/', parameters('apis_calculator_name_1'),'.asmx')]",
+                "path": "[parameters('apis_calculator_name_1')]",
+                "protocols": [
+                    "https"
+                ],
+                "authenticationSettings": null,
+                "subscriptionKeyParameterNames": null,
+                "type": "soap",
+                "isCurrent": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_TestApiMgt1_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_TestApiMgt1_name'), parameters('products_unlimited_name'))]"
             ]
         },
         {
