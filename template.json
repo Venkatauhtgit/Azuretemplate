@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "service_TestApiMgt1_name": {
-            "defaultValue": "TestApiMgt1",
+            "defaultValue": "TestApiMgt2",
             "type": "String"
         },
         "users_1_name": {
