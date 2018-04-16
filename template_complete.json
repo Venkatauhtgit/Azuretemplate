@@ -7,7 +7,7 @@
             "type": "String"
         },
         "users_1_name": {
-            "defaultValue": "1",
+            "defaultValue": "test1",
             "type": "String"
         },
         "apis_echo_api_name": {
@@ -15,7 +15,7 @@
             "type": "String"
         },
         "groups_guests_name": {
-            "defaultValue": "guests",
+            "defaultValue": "",
             "type": "String"
         },
         "apis_calculator_name": {
@@ -31,7 +31,7 @@
             "type": "String"
         },
         "groups_developers_name": {
-            "defaultValue": "developers",
+            "defaultValue": "",
             "type": "String"
         },
         "notifications_BCC_name": {
@@ -47,15 +47,15 @@
             "type": "String"
         },
         "groups_administrators_name": {
-            "defaultValue": "administrators",
+            "defaultValue": "",
             "type": "String"
         },
         "users_1_name_1": {
-            "defaultValue": "1",
+            "defaultValue": "test1",
             "type": "String"
         },
         "users_1_name_2": {
-            "defaultValue": "1",
+            "defaultValue": "test2",
             "type": "String"
         },
         "apis_echo_api_name_1": {
@@ -63,7 +63,7 @@
             "type": "String"
         },
         "groups_guests_name_1": {
-            "defaultValue": "guests",
+            "defaultValue": "",
             "type": "String"
         },
         "templates_AccountClosedDeveloper_name": {
@@ -79,11 +79,11 @@
             "type": "String"
         },
         "groups_guests_name_2": {
-            "defaultValue": "guests",
+            "defaultValue": "",
             "type": "String"
         },
         "groups_developers_name_1": {
-            "defaultValue": "developers",
+            "defaultValue": "",
             "type": "String"
         },
         "apis_calculator_name_1": {
