@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "service_CalculatorApi_name": {
-            "defaultValue": "Calculator1",
+            "defaultValue": "Calculator2",
             "type": "String"
         },
         "users_1_name": {
@@ -1200,7 +1200,7 @@
             "properties": {
                 "firstName": "Administrator",
                 "lastName": "last",
-                "email": "[concat('lavanya', parameters('users_1_name'),'22', parameters('users_1_name'),'.n@gmail.com')]",
+                "email": "[concat('lavanya1221.n@gmail.com')]",
                 "state": "active",
                 "note": null
             },
