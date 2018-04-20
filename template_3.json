@@ -1493,31 +1493,7 @@
                 "[resourceId('Microsoft.ApiManagement/service/groups', parameters('service_CalculatorApi_name'), parameters('groups_administrators_name'))]"
             ]
         },
-        {
-            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/groups/developers/users/1'.",
-            "type": "Microsoft.ApiManagement/service/groups/users",
-            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('groups_developers_name'), '/', parameters('users_1_name_1'))]",
-            "apiVersion": "2017-03-01",
-            "scale": null,
-            "properties": {
-                "firstName": "Administrator",
-                "lastName": "last3",
-                "email": "[concat('lavanya', parameters('users_1_name_1'),'22', parameters('users_1_name_1'),'.n@gmail.com')]",
-                "state": "active",
-                "registrationDate": "[concat('20', parameters('users_1_name_1'),'8-04-', parameters('users_1_name_1'),'7T07:', parameters('users_1_name_1'),'6:05.34Z')]",
-                "note": null,
-                "identities": [
-                    {
-                        "provider": "Azure",
-                        "id": "[concat('lavanya', parameters('users_1_name_1'),'22', parameters('users_1_name_1'),'.n@gmail.com')]"
-                    }
-                ]
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
-                "[resourceId('Microsoft.ApiManagement/service/groups', parameters('service_CalculatorApi_name'), parameters('groups_developers_name'))]"
-            ]
-        },
+        
         {
             "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/products/starter/groups/administrators'.",
             "type": "Microsoft.ApiManagement/service/products/groups",
