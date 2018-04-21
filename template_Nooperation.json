@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "service_TestCalc_name": {
-            "defaultValue": "TestCalc",
+            "defaultValue": "TestCalc1",
             "type": "String"
         },
         "users_1_name": {
