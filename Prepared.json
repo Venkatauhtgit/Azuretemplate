@@ -54,11 +54,15 @@
             "defaultValue": "policy",
             "type": "String"
         },
+	      "users_1_name": {
+            "defaultValue": "Test",
+            "type": "String"
+        },
         "policies_policy_name_5": {
             "defaultValue": "policy",
             "type": "String"
         }
-		},
+	    },
 		"variables": {},
 		    "resources": [
         {
