@@ -6,6 +6,10 @@
             "defaultValue": "Calculator3",
             "type": "String"
         },
+	            "products_unlimited_name": {
+            "defaultValue": "unlimited",
+            "type": "String"
+        },
 	            "products_starter_name": {
             "defaultValue": "starter",
             "type": "String"
