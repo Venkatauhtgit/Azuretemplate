@@ -1,0 +1,452 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "service_CalculatorApi_name": {
+            "defaultValue": "Calculator3",
+            "type": "String"
+        },
+		 "apis_calculator_name": {
+            "defaultValue": "calculator",
+            "type": "String"
+        },
+		"operations_AddOp_name": {
+            "defaultValue": "AddOp",
+            "type": "String"
+        },
+		"apis_calculator_name_1": {
+            "defaultValue": "calculator",
+            "type": "String"
+        },
+		"operations_DivideOp_name": {
+            "defaultValue": "DivideOp",
+            "type": "String"
+        },
+		"operations_MultiplyOp_name": {
+            "defaultValue": "MultiplyOp",
+            "type": "String"
+        },
+        "subscriptions_5ad59f360fa8970086070001_name": {
+            "defaultValue": "5ad59f360fa8970086070001",
+            "type": "String"
+        },
+        "subscriptions_5ad59f360fa8970086070002_name": {
+            "defaultValue": "5ad59f360fa8970086070002",
+            "type": "String"
+        },
+		        "operations_SubstractOp_name": {
+            "defaultValue": "SubstractOp",
+            "type": "String"
+        },
+		        "schemas_5ad5dfc860578e10d4cec3e5_name": {
+            "defaultValue": "5ad5dfc860578e10d4cec3e5",
+            "type": "String"
+        },
+        "policies_policy_name_2": {
+            "defaultValue": "policy",
+            "type": "String"
+        },
+		        "policies_policy_name_3": {
+            "defaultValue": "policy",
+            "type": "String"
+        },
+        "policies_policy_name_4": {
+            "defaultValue": "policy",
+            "type": "String"
+        },
+        "policies_policy_name_5": {
+            "defaultValue": "policy",
+            "type": "String"
+        }
+		},
+		"variables": {},
+		    "resources": [
+        {
+            "type": "Microsoft.ApiManagement/service",
+            "sku": {
+                "name": "Developer",
+                "capacity": 1
+            },
+            "name": "[parameters('service_CalculatorApi_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "Central US",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "publisherEmail": "lavanya1221.n@gmail.com",
+                "publisherName": "Infy",
+                "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
+                "hostnameConfigurations": [],
+                "additionalLocations": null,
+                "virtualNetworkConfiguration": null,
+                "customProperties": {
+                                   },
+                "virtualNetworkType": "None",
+                "certificates": null
+            },
+            "dependsOn": []
+        },
+		{
+            "type": "Microsoft.ApiManagement/service/apis",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "displayName": "[parameters('apis_calculator_name')]",
+                "apiRevision": "1",
+                "description": null,
+                "serviceUrl": "http://www.dneonline.com/",
+                "path": "[concat(parameters('apis_calculator_name'),'CalculatorInterface')]",
+                "protocols": [
+                    "http"
+                ],
+                "authenticationSettings": null,
+                "subscriptionKeyParameterNames": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]"
+            ]
+        },
+		{
+           
+            "type": "Microsoft.ApiManagement/service/subscriptions",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('subscriptions_5ad59f360fa8970086070001_name'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "userId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_CalculatorApi_name'), parameters('users_1_name'))]",
+                "productId": "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_CalculatorApi_name'), parameters('products_starter_name'))]",
+                "displayName": null,
+                "state": "active",
+                "primaryKey": "a2745dd344f54fdcba339f03addc5a17",
+                "secondaryKey": "4f24fd0ed189498a9a91362301a8c812"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_CalculatorApi_name'), parameters('users_1_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_CalculatorApi_name'), parameters('products_starter_name'))]"
+            ]
+        },
+		{
+           
+            "type": "Microsoft.ApiManagement/service/subscriptions",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('subscriptions_5ad59f360fa8970086070002_name'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "userId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_CalculatorApi_name'), parameters('users_1_name'))]",
+                "productId": "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_CalculatorApi_name'), parameters('products_unlimited_name'))]",
+                "displayName": null,
+                "state": "active",
+                "primaryKey": "9a6c99c0febd4fb0aaca760d6953191a",
+                "secondaryKey": "870ba159dc7e453f90d1896bf85c6478"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_CalculatorApi_name'), parameters('users_1_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_CalculatorApi_name'), parameters('products_unlimited_name'))]"
+            ]
+        },
+		{
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/operations/AddOp'.",
+            "type": "Microsoft.ApiManagement/service/apis/operations",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('operations_AddOp_name'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "displayName": "Add",
+                "method": "POST",
+                "urlTemplate": "/Add",
+                "templateParameters": [],
+                "description": "Adds two integers. This is a test WebService. ©DNE Online",
+                "request": {
+                    "description": "AddSoapIn",
+                    "queryParameters": [],
+                    "headers": [],
+                    "representations": [
+                        {
+                            "contentType": "application/json",
+                            "sample": "{\r\n  \"add\": {\r\n    \"intA\": 1.0,\r\n    \"intB\": 1.0\r\n  }\r\n}",
+                            "schemaId": "5ad5dfc860578e10d4cec3e5",
+                            "typeName": "Add"
+                        }
+                    ]
+                },
+                "responses": [
+                    {
+                        "statusCode": 200,
+                        "description": "AddSoapOut",
+                        "representations": [
+                            {
+                                "contentType": "application/json",
+                                "sample": "{\r\n  \"addResponse\": {\r\n    \"addResult\": 1\r\n  }\r\n}",
+                                "schemaId": "5ad5dfc860578e10d4cec3e5",
+                                "typeName": "AddResponse"
+                            }
+                        ],
+                        "headers": []
+                    }
+                ],
+                "policies": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/operations/DivideOp'.",
+            "type": "Microsoft.ApiManagement/service/apis/operations",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('operations_DivideOp_name'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "displayName": "Divide",
+                "method": "POST",
+                "urlTemplate": "/Divide",
+                "templateParameters": [],
+                "description": "Divide",
+                "request": {
+                    "description": "DivideSoapIn",
+                    "queryParameters": [],
+                    "headers": [],
+                    "representations": [
+                        {
+                            "contentType": "application/json",
+                            "sample": "{\r\n  \"divide\": {\r\n    \"intA\": 1.0,\r\n    \"intB\": 1.0\r\n  }\r\n}",
+                            "schemaId": "5ad5dfc860578e10d4cec3e5",
+                            "typeName": "Divide"
+                        }
+                    ]
+                },
+                "responses": [
+                    {
+                        "statusCode": 200,
+                        "description": "DivideSoapOut",
+                        "representations": [
+                            {
+                                "contentType": "application/json",
+                                "sample": "{\r\n  \"divideResponse\": {\r\n    \"divideResult\": 1\r\n  }\r\n}",
+                                "schemaId": "5ad5dfc860578e10d4cec3e5",
+                                "typeName": "DivideResponse"
+                            }
+                        ],
+                        "headers": []
+                    }
+                ],
+                "policies": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/operations/MultiplyOp'.",
+            "type": "Microsoft.ApiManagement/service/apis/operations",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('operations_MultiplyOp_name'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "displayName": "Multiply",
+                "method": "POST",
+                "urlTemplate": "/Multiply",
+                "templateParameters": [],
+                "description": "Multiply",
+                "request": {
+                    "description": "MultiplySoapIn",
+                    "queryParameters": [],
+                    "headers": [],
+                    "representations": [
+                        {
+                            "contentType": "application/json",
+                            "sample": "{\r\n  \"multiply\": {\r\n    \"intA\": 1.0,\r\n    \"intB\": 1.0\r\n  }\r\n}",
+                            "schemaId": "5ad5dfc860578e10d4cec3e5",
+                            "typeName": "Multiply"
+                        }
+                    ]
+                },
+                "responses": [
+                    {
+                        "statusCode": 200,
+                        "description": "MultiplySoapOut",
+                        "representations": [
+                            {
+                                "contentType": "application/json",
+                                "sample": "{\r\n  \"multiplyResponse\": {\r\n    \"multiplyResult\": 1\r\n  }\r\n}",
+                                "schemaId": "5ad5dfc860578e10d4cec3e5",
+                                "typeName": "MultiplyResponse"
+                            }
+                        ],
+                        "headers": []
+                    }
+                ],
+                "policies": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/operations/SubstractOp'.",
+            "type": "Microsoft.ApiManagement/service/apis/operations",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('operations_SubstractOp_name'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "displayName": "Subtract",
+                "method": "POST",
+                "urlTemplate": "/Subtract",
+                "templateParameters": [],
+                "description": "Subtract",
+                "request": {
+                    "description": "SubtractSoapIn",
+                    "queryParameters": [],
+                    "headers": [],
+                    "representations": [
+                        {
+                            "contentType": "application/json",
+                            "sample": "{\r\n  \"subtract\": {\r\n    \"intA\": 1.0,\r\n    \"intB\": 1.0\r\n  }\r\n}",
+                            "schemaId": "5ad5dfc860578e10d4cec3e5",
+                            "typeName": "Subtract"
+                        }
+                    ]
+                },
+                "responses": [
+                    {
+                        "statusCode": 200,
+                        "description": "SubtractSoapOut",
+                        "representations": [
+                            {
+                                "contentType": "application/json",
+                                "sample": "{\r\n  \"subtractResponse\": {\r\n    \"subtractResult\": 1\r\n  }\r\n}",
+                                "schemaId": "5ad5dfc860578e10d4cec3e5",
+                                "typeName": "SubtractResponse"
+                            }
+                        ],
+                        "headers": []
+                    }
+                ],
+                "policies": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]"
+            ]
+        },
+		{
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/schemas/5ad5dfc860578e10d4cec3e5'.",
+            "type": "Microsoft.ApiManagement/service/apis/schemas",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('schemas_5ad5dfc860578e10d4cec3e5_name'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "contentType": "application/vnd.ms-azure-apim.swagger.definitions+json",
+                "document": {}
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/operations/AddOp/policies/policy'.",
+            "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('operations_AddOp_name'), '/', parameters('policies_policy_name_2'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "policyContent": "<policies>\r\n  <inbound>\r\n    <base />\r\n    <rewrite-uri template=\"/calculator.asmx\" copy-unmatched-params=\"false\" />\r\n    <set-header name=\"SOAPAction\" exists-action=\"override\">\r\n      <value>\"http://tempuri.org/Add\"</value>\r\n    </set-header>\r\n    <set-body template=\"liquid\">\r\n      <soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"http://tempuri.org/\">\r\n        <soap:Body>\r\n          <Add>\r\n            <intA>{{body.add.intA}}</intA>\r\n            <intB>{{body.add.intB}}</intB>\r\n          </Add>\r\n        </soap:Body>\r\n      </soap:Envelope>\r\n    </set-body>\r\n    <set-header name=\"Content-Type\" exists-action=\"override\">\r\n      <value>text/xml</value>\r\n    </set-header>\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n    <choose>\r\n      <when condition=\"@(context.Response.StatusCode &lt; 400)\">\r\n        <set-body template=\"liquid\">\r\n                                                    {\r\n  \"addResponse\" : \r\n  {\r\n    \"addResult\" : {{body.envelope.body.AddResponse.AddResult}}\r\n  }\r\n}\r\n\r\n                                        </set-body>\r\n      </when>\r\n      <otherwise>\r\n        <set-variable name=\"old-body\" value=\"@(context.Response.Body.As&lt;string&gt;(preserveContent: true))\" />\r\n        <!-- Error response as per https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#7102-error-condition-responses -->\r\n        <set-body template=\"liquid\">\r\n                {\r\n                \"error\": {\r\n                    \"code\": \"{{body.envelope.body.fault.faultcode}}\",\r\n                      \"message\": \"{{body.envelope.body.fault.faultstring}}\"\r\n                      }\r\n            }\r\n                </set-body>\r\n        <choose>\r\n          <when condition=\"@(string.IsNullOrEmpty(context.Response.Body.As&lt;JObject&gt;(preserveContent: true)[&quot;error&quot;][&quot;code&quot;].ToString()) &amp;&amp; string.IsNullOrEmpty(context.Response.Body.As&lt;JObject&gt;(preserveContent: true)[&quot;error&quot;][&quot;message&quot;].ToString()))\">\r\n            <set-body>@{\r\n                            var newResponseBody = new JObject();\r\n                            newResponseBody[\"error\"] = new JObject();\r\n                            newResponseBody[\"error\"][\"code\"] = \"InvalidErrorResponseBody\";\r\n                            if (string.IsNullOrEmpty((string)context.Variables[\"old-body\"]))\r\n                            {\r\n                                newResponseBody[\"error\"][\"message\"] = \"The error response body was not a valid SOAP error response. The response body was empty.\";\r\n                            }\r\n                            else\r\n                            {\r\n                                newResponseBody[\"error\"][\"message\"] = \"The error response body was not a valid SOAP error response. The response body was: '\" + context.Variables[\"old-body\"] + \"'.\";\r\n                            }\r\n                            return newResponseBody.ToString();\r\n                        }\r\n                        </set-body>\r\n          </when>\r\n        </choose>\r\n      </otherwise>\r\n    </choose>\r\n    <set-header name=\"Content-Type\" exists-action=\"override\">\r\n      <value>application/json</value>\r\n    </set-header>\r\n  </outbound>\r\n</policies>"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'), parameters('operations_AddOp_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/operations/DivideOp/policies/policy'.",
+            "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('operations_DivideOp_name'), '/', parameters('policies_policy_name_3'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "policyContent": "<policies>\r\n  <inbound>\r\n    <base />\r\n    <rewrite-uri template=\"/calculator.asmx\" copy-unmatched-params=\"false\" />\r\n    <set-header name=\"SOAPAction\" exists-action=\"override\">\r\n      <value>\"http://tempuri.org/Divide\"</value>\r\n    </set-header>\r\n    <set-body template=\"liquid\">\r\n      <soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"http://tempuri.org/\">\r\n        <soap:Body>\r\n          <Divide>\r\n            <intA>{{body.divide.intA}}</intA>\r\n            <intB>{{body.divide.intB}}</intB>\r\n          </Divide>\r\n        </soap:Body>\r\n      </soap:Envelope>\r\n    </set-body>\r\n    <set-header name=\"Content-Type\" exists-action=\"override\">\r\n      <value>text/xml</value>\r\n    </set-header>\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n    <choose>\r\n      <when condition=\"@(context.Response.StatusCode &lt; 400)\">\r\n        <set-body template=\"liquid\">\r\n                                                    {\r\n  \"divideResponse\" : \r\n  {\r\n    \"divideResult\" : {{body.envelope.body.DivideResponse.DivideResult}}\r\n  }\r\n}\r\n\r\n                                        </set-body>\r\n      </when>\r\n      <otherwise>\r\n        <set-variable name=\"old-body\" value=\"@(context.Response.Body.As&lt;string&gt;(preserveContent: true))\" />\r\n        <!-- Error response as per https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#7102-error-condition-responses -->\r\n        <set-body template=\"liquid\">\r\n                {\r\n                \"error\": {\r\n                    \"code\": \"{{body.envelope.body.fault.faultcode}}\",\r\n                      \"message\": \"{{body.envelope.body.fault.faultstring}}\"\r\n                      }\r\n            }\r\n                </set-body>\r\n        <choose>\r\n          <when condition=\"@(string.IsNullOrEmpty(context.Response.Body.As&lt;JObject&gt;(preserveContent: true)[&quot;error&quot;][&quot;code&quot;].ToString()) &amp;&amp; string.IsNullOrEmpty(context.Response.Body.As&lt;JObject&gt;(preserveContent: true)[&quot;error&quot;][&quot;message&quot;].ToString()))\">\r\n            <set-body>@{\r\n                            var newResponseBody = new JObject();\r\n                            newResponseBody[\"error\"] = new JObject();\r\n                            newResponseBody[\"error\"][\"code\"] = \"InvalidErrorResponseBody\";\r\n                            if (string.IsNullOrEmpty((string)context.Variables[\"old-body\"]))\r\n                            {\r\n                                newResponseBody[\"error\"][\"message\"] = \"The error response body was not a valid SOAP error response. The response body was empty.\";\r\n                            }\r\n                            else\r\n                            {\r\n                                newResponseBody[\"error\"][\"message\"] = \"The error response body was not a valid SOAP error response. The response body was: '\" + context.Variables[\"old-body\"] + \"'.\";\r\n                            }\r\n                            return newResponseBody.ToString();\r\n                        }\r\n                        </set-body>\r\n          </when>\r\n        </choose>\r\n      </otherwise>\r\n    </choose>\r\n    <set-header name=\"Content-Type\" exists-action=\"override\">\r\n      <value>application/json</value>\r\n    </set-header>\r\n  </outbound>\r\n</policies>"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'), parameters('operations_DivideOp_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/operations/MultiplyOp/policies/policy'.",
+            "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('operations_MultiplyOp_name'), '/', parameters('policies_policy_name_4'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "policyContent": "<policies>\r\n  <inbound>\r\n    <base />\r\n    <rewrite-uri template=\"/calculator.asmx\" copy-unmatched-params=\"false\" />\r\n    <set-header name=\"SOAPAction\" exists-action=\"override\">\r\n      <value>\"http://tempuri.org/Multiply\"</value>\r\n    </set-header>\r\n    <set-body template=\"liquid\">\r\n      <soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"http://tempuri.org/\">\r\n        <soap:Body>\r\n          <Multiply>\r\n            <intA>{{body.multiply.intA}}</intA>\r\n            <intB>{{body.multiply.intB}}</intB>\r\n          </Multiply>\r\n        </soap:Body>\r\n      </soap:Envelope>\r\n    </set-body>\r\n    <set-header name=\"Content-Type\" exists-action=\"override\">\r\n      <value>text/xml</value>\r\n    </set-header>\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n    <choose>\r\n      <when condition=\"@(context.Response.StatusCode &lt; 400)\">\r\n        <set-body template=\"liquid\">\r\n                                                    {\r\n  \"multiplyResponse\" : \r\n  {\r\n    \"multiplyResult\" : {{body.envelope.body.MultiplyResponse.MultiplyResult}}\r\n  }\r\n}\r\n\r\n                                        </set-body>\r\n      </when>\r\n      <otherwise>\r\n        <set-variable name=\"old-body\" value=\"@(context.Response.Body.As&lt;string&gt;(preserveContent: true))\" />\r\n        <!-- Error response as per https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#7102-error-condition-responses -->\r\n        <set-body template=\"liquid\">\r\n                {\r\n                \"error\": {\r\n                    \"code\": \"{{body.envelope.body.fault.faultcode}}\",\r\n                      \"message\": \"{{body.envelope.body.fault.faultstring}}\"\r\n                      }\r\n            }\r\n                </set-body>\r\n        <choose>\r\n          <when condition=\"@(string.IsNullOrEmpty(context.Response.Body.As&lt;JObject&gt;(preserveContent: true)[&quot;error&quot;][&quot;code&quot;].ToString()) &amp;&amp; string.IsNullOrEmpty(context.Response.Body.As&lt;JObject&gt;(preserveContent: true)[&quot;error&quot;][&quot;message&quot;].ToString()))\">\r\n            <set-body>@{\r\n                            var newResponseBody = new JObject();\r\n                            newResponseBody[\"error\"] = new JObject();\r\n                            newResponseBody[\"error\"][\"code\"] = \"InvalidErrorResponseBody\";\r\n                            if (string.IsNullOrEmpty((string)context.Variables[\"old-body\"]))\r\n                            {\r\n                                newResponseBody[\"error\"][\"message\"] = \"The error response body was not a valid SOAP error response. The response body was empty.\";\r\n                            }\r\n                            else\r\n                            {\r\n                                newResponseBody[\"error\"][\"message\"] = \"The error response body was not a valid SOAP error response. The response body was: '\" + context.Variables[\"old-body\"] + \"'.\";\r\n                            }\r\n                            return newResponseBody.ToString();\r\n                        }\r\n                        </set-body>\r\n          </when>\r\n        </choose>\r\n      </otherwise>\r\n    </choose>\r\n    <set-header name=\"Content-Type\" exists-action=\"override\">\r\n      <value>application/json</value>\r\n    </set-header>\r\n  </outbound>\r\n</policies>"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'), parameters('operations_MultiplyOp_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/apis/calculator/operations/SubstractOp/policies/policy'.",
+            "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('apis_calculator_name'), '/', parameters('operations_SubstractOp_name'), '/', parameters('policies_policy_name_5'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "policyContent": "<policies>\r\n  <inbound>\r\n    <base />\r\n    <rewrite-uri template=\"/calculator.asmx\" copy-unmatched-params=\"false\" />\r\n    <set-header name=\"SOAPAction\" exists-action=\"override\">\r\n      <value>\"http://tempuri.org/Subtract\"</value>\r\n    </set-header>\r\n    <set-body template=\"liquid\">\r\n      <soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns=\"http://tempuri.org/\">\r\n        <soap:Body>\r\n          <Subtract>\r\n            <intA>{{body.subtract.intA}}</intA>\r\n            <intB>{{body.subtract.intB}}</intB>\r\n          </Subtract>\r\n        </soap:Body>\r\n      </soap:Envelope>\r\n    </set-body>\r\n    <set-header name=\"Content-Type\" exists-action=\"override\">\r\n      <value>text/xml</value>\r\n    </set-header>\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n    <choose>\r\n      <when condition=\"@(context.Response.StatusCode &lt; 400)\">\r\n        <set-body template=\"liquid\">\r\n                                                    {\r\n  \"subtractResponse\" : \r\n  {\r\n    \"subtractResult\" : {{body.envelope.body.SubtractResponse.SubtractResult}}\r\n  }\r\n}\r\n\r\n                                        </set-body>\r\n      </when>\r\n      <otherwise>\r\n        <set-variable name=\"old-body\" value=\"@(context.Response.Body.As&lt;string&gt;(preserveContent: true))\" />\r\n        <!-- Error response as per https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#7102-error-condition-responses -->\r\n        <set-body template=\"liquid\">\r\n                {\r\n                \"error\": {\r\n                    \"code\": \"{{body.envelope.body.fault.faultcode}}\",\r\n                      \"message\": \"{{body.envelope.body.fault.faultstring}}\"\r\n                      }\r\n            }\r\n                </set-body>\r\n        <choose>\r\n          <when condition=\"@(string.IsNullOrEmpty(context.Response.Body.As&lt;JObject&gt;(preserveContent: true)[&quot;error&quot;][&quot;code&quot;].ToString()) &amp;&amp; string.IsNullOrEmpty(context.Response.Body.As&lt;JObject&gt;(preserveContent: true)[&quot;error&quot;][&quot;message&quot;].ToString()))\">\r\n            <set-body>@{\r\n                            var newResponseBody = new JObject();\r\n                            newResponseBody[\"error\"] = new JObject();\r\n                            newResponseBody[\"error\"][\"code\"] = \"InvalidErrorResponseBody\";\r\n                            if (string.IsNullOrEmpty((string)context.Variables[\"old-body\"]))\r\n                            {\r\n                                newResponseBody[\"error\"][\"message\"] = \"The error response body was not a valid SOAP error response. The response body was empty.\";\r\n                            }\r\n                            else\r\n                            {\r\n                                newResponseBody[\"error\"][\"message\"] = \"The error response body was not a valid SOAP error response. The response body was: '\" + context.Variables[\"old-body\"] + \"'.\";\r\n                            }\r\n                            return newResponseBody.ToString();\r\n                        }\r\n                        </set-body>\r\n          </when>\r\n        </choose>\r\n      </otherwise>\r\n    </choose>\r\n    <set-header name=\"Content-Type\" exists-action=\"override\">\r\n      <value>application/json</value>\r\n    </set-header>\r\n  </outbound>\r\n</policies>"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_CalculatorApi_name'), parameters('apis_calculator_name'), parameters('operations_SubstractOp_name'))]"
+            ]
+        },
+		 {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/products/starter/policies/policy'.",
+            "type": "Microsoft.ApiManagement/service/products/policies",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('products_starter_name'), '/', parameters('policies_policy_name_1'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "policyContent": "[concat('<!--\r\n            IMPORTANT:\r\n            - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.\r\n            - Only the <forward-request> ', parameters('policies_policy_name_1'),' element can appear within the <backend> section element.\r\n            - To apply a ', parameters('policies_policy_name_1'),' to the incoming request (before it is forwarded to the backend service), place a corresponding ', parameters('policies_policy_name_1'),' element within the <inbound> section element.\r\n            - To apply a ', parameters('policies_policy_name_1'),' to the outgoing response (before it is sent back to the caller), place a corresponding ', parameters('policies_policy_name_1'),' element within the <outbound> section element.\r\n            - To add a ', parameters('policies_policy_name_1'),' position the cursor at the desired insertion point and click on the round button associated with the ', parameters('policies_policy_name_1'),'.\r\n            - To remove a ', parameters('policies_policy_name_1'),', delete the corresponding ', parameters('policies_policy_name_1'),' statement from the ', parameters('policies_policy_name_1'),' document.\r\n            - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.\r\n            - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.\r\n            - Policies are applied in the order of their appearance, from the top down.\r\n        -->\r\n<policies>\r\n  <inbound>\r\n    <rate-limit calls=\"5\" renewal-period=\"60\" />\r\n    <quota calls=\"100\" renewal-period=\"604800\" />\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n  </outbound>\r\n</policies>')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_CalculatorApi_name'), parameters('products_starter_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/5635439f-32f1-4382-acc3-07699b0ace3c/resourcegroups/Calculator/providers/Microsoft.ApiManagement/service/CalculatorApi/products/unlimited/apis/calculator'.",
+            "type": "Microsoft.ApiManagement/service/products/apis",
+            "name": "[concat(parameters('service_CalculatorApi_name'), '/', parameters('products_unlimited_name'), '/', parameters('apis_calculator_name_1'))]",
+            "apiVersion": "2017-03-01",
+            "scale": null,
+            "properties": {
+                "displayName": "[parameters('apis_calculator_name_1')]",
+                "apiRevision": "1",
+                "description": null,
+                "serviceUrl": "http://www.dneonline.com/",
+                "path": "[concat(parameters('apis_calculator_name_1'),'CalculatorInterface')]",
+                "protocols": [
+                    "http"
+                ],
+                "authenticationSettings": null,
+                "subscriptionKeyParameterNames": null,
+                "isCurrent": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_CalculatorApi_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_CalculatorApi_name'), parameters('products_unlimited_name'))]"
+            ]
+        },
+		]
+		}
