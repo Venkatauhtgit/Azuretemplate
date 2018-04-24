@@ -33,7 +33,7 @@
 		}
 	},
 	"variables": {
-		"ServiceName": "TestApiModiPoli"
+		"ServiceName": "TestApiModi"
 	},
 	"resources": [{
 		"apiVersion": "2017-03-01",
@@ -110,9 +110,13 @@
 							"name": "policy",
 							"apiVersion": "2017-03-01",
 							"properties": {
-								"policyContent": "[<policies>\r\n  <inbound>\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <json-to-xml apply=\"always\" consider-accept-header=\"false\" parse-date=\"false\" />\r\n    <base />\r\n  </outbound>\r\n  <on-error>\r\n    <base />\r\n  </on-error>\r\n</policies>]"
-							}
-
+								"policyContent": "[  <inbound>\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <json-to-xml apply=\"always\" consider-accept-header=\"false\" parse-date=\"false\" />\r\n    <base />\r\n  </outbound>\r\n  <on-error>\r\n    <base />\r\n  </on-error>\r\n]"
+							},
+							"dependsOn": [
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
+							]
 						}]
 
 					}
