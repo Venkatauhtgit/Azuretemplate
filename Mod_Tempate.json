@@ -33,11 +33,11 @@
 		}
 	},
 	"variables": {
-		"apiManagementServiceName": "TestApi"
+		"ServiceName": "TestApi"
 	},
 	"resources": [{
 		"apiVersion": "2017-03-01",
-		"name": "[variables('apiManagementServiceName')]",
+		"name": "[variables('ServiceName')]",
 		"type": "Microsoft.ApiManagement/service",
 		"location": "[resourceGroup().location]",
 		"tags": {},
@@ -54,7 +54,7 @@
 				"type": "policies",
 				"name": "policy",
 				"dependsOn": [
-					"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]"
+					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
 				],
 				"properties": {
 					"policyContent": ""
@@ -65,7 +65,7 @@
 				"type": "apis",
 				"name": "PetStoreSwaggerImportExample",
 				"dependsOn": [
-					"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]"
+					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
 				],
 				"properties": {
 					"contentFormat": "SwaggerLinkJson",
@@ -78,7 +78,7 @@
 				"type": "apis",
 				"name": "exampleApi",
 				"dependsOn": [
-					"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]"
+					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
 				],
 				"properties": {
 					"displayName": "Example API Name",
@@ -94,7 +94,7 @@
 						"type": "operations",
 						"name": "exampleOperationsDELETE",
 						"dependsOn": [
-							"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi')]"
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]"
 						],
 						"properties": {
 							"displayName": "DELETE resource",
@@ -108,7 +108,7 @@
 						"type": "operations",
 						"name": "exampleOperationsGET",
 						"dependsOn": [
-							"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi')]"
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]"
 						],
 						"properties": {
 							"displayName": "GET resource",
@@ -121,9 +121,9 @@
 							"type": "policies",
 							"name": "policy",
 							"dependsOn": [
-								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]",
-								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi')]",
-								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
 							],
 							"properties": {
 								"policyContent": ""
@@ -137,7 +137,7 @@
 				"type": "apis",
 				"name": "exampleApiWithPolicy",
 				"dependsOn": [
-					"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]"
+					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
 				],
 				"properties": {
 					"displayName": "Example API Name with Policy",
@@ -153,8 +153,8 @@
 					"type": "policies",
 					"name": "policy",
 					"dependsOn": [
-						"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]",
-						"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApiWithPolicy')]"
+						"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+						"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApiWithPolicy')]"
 					],
 					"properties": {
 						"policyContent": ""
@@ -166,7 +166,7 @@
 				"type": "products",
 				"name": "exampleProduct",
 				"dependsOn": [
-					"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]"
+					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
 				],
 				"properties": {
 					"displayName": "Example Product Name",
@@ -182,9 +182,9 @@
 						"type": "apis",
 						"name": "exampleApi",
 						"dependsOn": [
-							"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]",
-							"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi')]",
-							"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/products/exampleProduct')]"
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/products/exampleProduct')]"
 						]
 					},
 					{
@@ -192,8 +192,8 @@
 						"type": "policies",
 						"name": "policy",
 						"dependsOn": [
-							"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]",
-							"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/products/exampleProduct')]"
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/products/exampleProduct')]"
 						],
 						"properties": {
 							"policyContent": ""
