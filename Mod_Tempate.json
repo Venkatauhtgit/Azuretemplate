@@ -33,7 +33,7 @@
         },
 
     "variables": {
-        "apiManagementServiceName": "[concat('apiservice', uniqueString(resourceGroup().id))]"
+        "apiManagementServiceName": "TestApi"
     },
     "resources": [
         {
