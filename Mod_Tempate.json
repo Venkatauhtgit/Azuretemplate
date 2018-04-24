@@ -33,7 +33,7 @@
 		}
 	},
 	"variables": {
-		"ServiceName": "TestApiModi"
+		"ServiceName": "TestApi"
 	},
 	"resources": [{
 		"apiVersion": "2017-03-01",
@@ -50,17 +50,6 @@
 			"publisherName": "[parameters('publisherName')]"
 		},
 		"resources": [{
-				"apiVersion": "2017-03-01",
-				"type": "policies",
-				"name": "policy",
-				"dependsOn": [
-					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
-				],
-				"properties": {
-					"policyContent": ""
-				}
-			},
-			{
 				"apiVersion": "2017-03-01",
 				"type": "apis",
 				"name": "PetStoreSwaggerImportExample",
@@ -124,10 +113,8 @@
 								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
 								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
 								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
-							],
-							"properties": {
-								"policyContent": ""
-							}
+							]
+
 						}]
 					}
 				]
@@ -147,19 +134,8 @@
 					"protocols": [
 						"HTTPS"
 					]
-				},
-				"resources": [{
-					"apiVersion": "2017-03-01",
-					"type": "policies",
-					"name": "policy",
-					"dependsOn": [
-						"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
-						"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApiWithPolicy')]"
-					],
-					"properties": {
-						"policyContent": ""
-					}
-				}]
+				}
+
 			},
 			{
 				"apiVersion": "2017-03-01",
@@ -186,19 +162,8 @@
 							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
 							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/products/exampleProduct')]"
 						]
-					},
-					{
-						"apiVersion": "2017-03-01",
-						"type": "policies",
-						"name": "policy",
-						"dependsOn": [
-							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
-							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/products/exampleProduct')]"
-						],
-						"properties": {
-							"policyContent": ""
-						}
 					}
+
 				]
 			}
 		]
