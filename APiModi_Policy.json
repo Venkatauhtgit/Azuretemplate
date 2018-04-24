@@ -105,7 +105,7 @@
 							"urlTemplate": "/resource",
 							"description": "A demonstration of a GET call"
 						},
-						"resources": [{
+						"resources": {
 							"type": "policies",
 							"name": "policy",
 							"apiVersion": "2017-03-01",
@@ -117,7 +117,7 @@
 								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
 								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
 							]
-						}]
+						}
 
 					}
 				]
