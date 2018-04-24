@@ -33,7 +33,7 @@
 		}
 	},
 	"variables": {
-		"ServiceName": "TestApiModi1"
+		"ServiceName": "TestApiModi"
 	},
 	"resources": [{
 		"apiVersion": "2017-03-01",
@@ -105,21 +105,19 @@
 							"urlTemplate": "/resource",
 							"description": "A demonstration of a GET call"
 						},
-						"resources": [
-                                {
-                                    "type": "policies",
-                                    "name": "policy",
-                                    "apiVersion": "2017-03-01",
-                                    "properties": {
-                                        "policyContent": "(<policies>\r\n  <inbound />\r\n  <backend>\r\n    <forward-request />\r\n  </backend>\r\n  <outbound>   <json-to-xml apply="always" consider-accept-header="false" parse-date="false" />\r\n </outbound>\r\n</policies>)"
-                                    },
-                                    "dependsOn": [
-                                        "[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]",
-                                        "[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi')]",
-                                        "[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
-                                    ]
-                                }
-                            ],
+						"resources": [{
+							"type": "policies",
+							"name": "policy",
+							"apiVersion": "2017-03-01",
+							"properties": {
+								"policyContent": "[\r\n<policies>\r\n  <inbound>\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <json-to-xml apply=\"always\" consider-accept-header=\"false\" parse-date=\"false\" />\r\n    <base />\r\n  </outbound>\r\n  <on-error>\r\n    <base />\r\n  </on-error>\r\n</policies>')]"
+							},
+							"dependsOn": [
+								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]",
+								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi')]",
+								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
+							]
+						}]
 
 					}
 				]
