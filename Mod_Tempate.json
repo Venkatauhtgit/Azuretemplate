@@ -33,7 +33,7 @@
 		}
 	},
 	"variables": {
-		"ServiceName": "TestApiModi1"
+		"ServiceName": "TestApi"
 	},
 	"resources": [{
 		"apiVersion": "2017-03-01",
@@ -104,18 +104,8 @@
 							"method": "GET",
 							"urlTemplate": "/resource",
 							"description": "A demonstration of a GET call"
-						},
-						"resources": [{
-							"apiVersion": "2017-03-01",
-							"type": "policies",
-							"name": "policy",
-							"dependsOn": [
-								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
-								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
-								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
-							]
+						}
 
-						}]
 					}
 				]
 			},
