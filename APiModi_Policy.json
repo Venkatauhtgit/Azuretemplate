@@ -33,7 +33,7 @@
 		}
 	},
 	"variables": {
-		"ServiceName": "TestApiModi"
+		"ServiceName": "TestApiModiPol"
 	},
 	"resources": [{
 		"apiVersion": "2017-03-01",
