@@ -113,9 +113,9 @@
 								"policyContent": "\r\n<policies>\r\n  <inbound>\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <json-to-xml apply=\"always\" consider-accept-header=\"false\" parse-date=\"false\" />\r\n    <base />\r\n  </outbound>\r\n  <on-error>\r\n    <base />\r\n  </on-error>\r\n</policies>"
 							},
 							"dependsOn": [
-								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'))]",
-								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi')]",
-								"[concat('Microsoft.ApiManagement/service/', variables('apiManagementServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
 							]
 						}]
 
