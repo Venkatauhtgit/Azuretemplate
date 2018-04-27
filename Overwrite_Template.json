@@ -170,7 +170,7 @@
 					{
 						"apiVersion": "2017-03-01",
 						"type": "apis",
-						"name": "exampleApi",
+						"name": "exampleApiWithPolicy",
 						"dependsOn": [
 							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
 							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApiWithPolicy')]",
