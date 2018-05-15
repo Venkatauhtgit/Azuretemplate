@@ -1,0 +1,145 @@
+
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.1",
+	"parameters": {
+		"publisherEmail": {
+			"type": "string",
+			"minLength": 1,
+			"metadata": {
+				"description": "The email address of the owner of the service"
+			}
+		},
+		"publisherName": {
+			"type": "string"
+		},
+		"sku": {
+			"type": "string",
+			"allowedValues": [
+				"Developer",
+				"Standard",
+				"Premium"
+			],
+			"defaultValue": "Standard",
+			"metadata": {
+				"description": "The pricing tier of this API Management service"
+			}
+		},
+		"skuCount": {
+			"type": "int",
+			"defaultValue": 1,
+			"metadata": {
+				"description": "The instance size of this API Management service."
+			}
+		}
+	},
+	"variables": {
+		"ServiceName": "test12"
+	},
+	"resources": [{
+		"apiVersion": "2017-03-01",
+		"name": "[variables('ServiceName')]",
+		"type": "Microsoft.ApiManagement/service",
+		"location": "[resourceGroup().location]",
+		"tags": {},
+		"sku": {
+			"name": "[parameters('sku')]",
+			"capacity": "[parameters('skuCount')]"
+		},
+		"properties": {
+			"publisherEmail": "[parameters('publisherEmail')]",
+			"publisherName": "[parameters('publisherName')]"
+		},
+		"resources": [{
+				"apiVersion": "2017-03-01",
+				"type": "apis",
+				"name": "PetStoreSwaggerImportExample",
+				"dependsOn": [
+					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
+				],
+				"properties": {
+					"contentFormat": "SwaggerLinkJson",
+					"contentValue": "http://petstore.swagger.io/v2/swagger.json",
+					"path": "examplepetstore"
+				}
+			},
+			{
+				"apiVersion": "2017-03-01",
+				"type": "apis",
+				"name": "exampleApi",
+				"dependsOn": [
+					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
+				],
+				"properties": {
+					"displayName": "Example API Name",
+					"description": "Description for example API",
+					"serviceUrl": "https://example.net",
+					"path": "exampleapipath",
+					"protocols": [
+						"HTTPS"
+					]
+				},
+				"resources": [
+					{
+						"apiVersion": "2017-03-01",
+						"type": "operations",
+						"name": "exampleOperationsGET",
+						"dependsOn": [
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]"
+						],
+						"properties": {
+							"displayName": "GET resource",
+							"method": "GET",
+							"urlTemplate": "/resource",
+							"description": "A demonstration of a GET call"
+						},
+						"resources": [{
+							"type": "policies",
+							"name": "policy",
+							"apiVersion": "2017-03-01",
+							"properties": {
+								"policyContent": "\r\n<policies>\r\n  <inbound>\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <json-to-xml apply=\"always\" consider-accept-header=\"false\" parse-date=\"false\" />\r\n    <base />\r\n  </outbound>\r\n  <on-error>\r\n    <base />\r\n  </on-error>\r\n</policies>"
+							},
+							"dependsOn": [
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi/operations/exampleOperationsGET')]"
+							]
+						}]
+
+					}
+				]
+			},
+
+			{
+				"apiVersion": "2017-03-01",
+				"type": "products",
+				"name": "exampleProduct",
+				"dependsOn": [
+					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
+				],
+				"properties": {
+					"displayName": "Example Product Name",
+					"description": "Description for example product",
+					"terms": "Terms for example product",
+					"subscriptionRequired": true,
+					"approvalRequired": false,
+					"subscriptionsLimit": 1,
+					"state": "published"
+				},
+				"resources": [{
+						"apiVersion": "2017-03-01",
+						"type": "apis",
+						"name": "exampleApi",
+						"dependsOn": [
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
+							"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/products/exampleProduct')]"
+						]
+					}
+
+				]
+			}
+		]
+	}]
+}
