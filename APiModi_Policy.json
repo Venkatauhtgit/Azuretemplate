@@ -34,7 +34,7 @@
 		}
 	},
 	"variables": {
-		"ServiceName": "TestApi"
+		"ServiceName": "test12"
 	},
 	"resources": [{
 		"apiVersion": "2017-03-01",
