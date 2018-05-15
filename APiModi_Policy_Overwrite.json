@@ -1,18 +1,17 @@
+
 {
 	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-	"contentVersion": "1.0.0.0",
+	"contentVersion": "1.0.0.1",
 	"parameters": {
 		"publisherEmail": {
 			"type": "string",
 			"minLength": 1,
 			"metadata": {
 				"description": "The email address of the owner of the service"
-			},
-			"defaultValue": "testpolicyoverwrite@gmail.com"
+			}
 		},
 		"publisherName": {
-			"type": "string",
-			"defaultValue": "testpolicyoverwrite"
+			"type": "string"
 		},
 		"sku": {
 			"type": "string",
@@ -35,7 +34,7 @@
 		}
 	},
 	"variables": {
-		"ServiceName": "TestApiModiPolOverwrite"
+		"ServiceName": "test12"
 	},
 	"resources": [{
 		"apiVersion": "2017-03-01",
@@ -92,7 +91,20 @@
 							"method": "DELETE",
 							"urlTemplate": "/resource",
 							"description": "A demonstration of a DELETE call"
-						}
+						},
+						"resources": [{
+							"type": "policies",
+							"name": "policy",
+							"apiVersion": "2017-03-01",
+							"properties": {
+								"policyContent": "\r\n<policies>\r\n  <inbound>\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <json-to-xml apply=\"always\" consider-accept-header=\"false\" parse-date=\"false\" />\r\n    <base />\r\n  </outbound>\r\n  <on-error>\r\n    <base />\r\n  </on-error>\r\n</policies>"
+							},
+							"dependsOn": [
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi')]",
+								"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'), '/apis/exampleApi/operations/exampleOperationsDELETE')]"
+							]
+						}]
 					},
 					{
 						"apiVersion": "2017-03-01",
@@ -124,24 +136,7 @@
 					}
 				]
 			},
-			{
-				"apiVersion": "2017-03-01",
-				"type": "apis",
-				"name": "exampleApiWithPolicy",
-				"dependsOn": [
-					"[concat('Microsoft.ApiManagement/service/', variables('ServiceName'))]"
-				],
-				"properties": {
-					"displayName": "Example API Name with Policy",
-					"description": "Description for example API with policy",
-					"serviceUrl": "https://exampleapiwithpolicy.net",
-					"path": "exampleapiwithpolicypath",
-					"protocols": [
-						"HTTPS"
-					]
-				}
 
-			},
 			{
 				"apiVersion": "2017-03-01",
 				"type": "products",
